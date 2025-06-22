@@ -11,3 +11,6 @@ wheels/
 
 # Log files
 logs/
+
+# System generated files
+.DS_Store
