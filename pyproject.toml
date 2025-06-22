@@ -1,16 +1,38 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+
 [project]
 name = "student-performance-end-to-end-project"
 version = "0.1.0"
-description = "Add your description here"
+authors = [
+    { name = "Mit Patel", email = "patel.m9521@gmail.com" }
+]
+description = "A project for analyzing student performance"
 readme = "README.md"
 requires-python = ">=3.12"
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
 dependencies = [
     "catboost>=1.2.8",
     "ipykernel>=6.29.5",
     "matplotlib>=3.10.3",
     "numpy>=2.3.0",
     "pandas>=2.3.0",
+    "pip>=25.1.1",
     "scikit-learn>=1.7.0",
     "seaborn>=0.13.2",
     "setuptools>=80.9.0",
 ]
+
+
+[project.urls]
+Homepage = "https://github.com/GoJo-Rika/Student-Performance-Project"
+Issues = "https://github.com/GoJo-Rika/Student-Performance-Project/issues"
+
+[tool.setuptools]
+packages = ["src"]

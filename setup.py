@@ -1,14 +1,14 @@
 from pathlib import Path
 from typing import List
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
 HYPEN_E_DOT = "-e ."
 
 
 def get_requirements(file_path: str) -> List[str]:
     """
-    This function will return the list of requirements
+    This function will return the list of requirements.
     """
     requirements = []
     with Path(file_path).open() as file_obj:
@@ -22,10 +22,5 @@ def get_requirements(file_path: str) -> List[str]:
 
 
 setup(
-    name="student-performance-end-to-end-project",
-    version="0.0.1",
-    author="MitPatel",
-    author_email="patel.m9521@gmail.com",
-    packages=find_packages(),
     install_requires=get_requirements("requirements.txt"),
 )
