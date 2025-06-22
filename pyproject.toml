@@ -19,6 +19,7 @@ classifiers = [
 ]
 dependencies = [
     "catboost>=1.2.8",
+    "flask>=3.1.1",
     "ipykernel>=6.29.5",
     "matplotlib>=3.10.3",
     "numpy>=2.3.0",

@@ -21,7 +21,14 @@ def save_object(file_path: str, obj: object) -> None:
         raise CustomError(e, sys)
 
 
-def evaluate_models(X_train: object, y_train: object, X_test: object, y_test: object, models: dict, param: dict) -> dict:
+def evaluate_models(
+    X_train: object,
+    y_train: object,
+    X_test: object,
+    y_test: object,
+    models: dict,
+    param: dict,
+) -> dict:
     try:
         report = {}
 
@@ -49,3 +56,12 @@ def evaluate_models(X_train: object, y_train: object, X_test: object, y_test: ob
         raise CustomError(e, sys)
     else:
         return report
+
+
+def load_object(file_path: str) -> object:
+    try:
+        with Path(file_path).open("rb") as file_obj:
+            return pickle.load(file_obj)
+
+    except Exception as e:
+        raise CustomError(e, sys)

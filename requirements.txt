@@ -4,5 +4,6 @@ seaborn
 matplotlib
 scikit-learn
 catboost
+flask
 
 # -e .
