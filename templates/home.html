@@ -1,110 +1,79 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Exam Performance Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
 <body>
     <div class="login">
-   
-       <form action="{{ url_for('predict_datapoint')}}" method="post">
-        <h1>
-            <legend>Student Exam Performance Prediction</legend>
-        </h1>
-        <div class="mb-3">
-            <label class="form-label">Gender</label>
-            <select class="form-control" name="gender" placeholder="Enter you Gender" required>
-                <option class="placeholder" selected disabled value="">Select your Gender</option>
-                <option value="male">
-                    Male
-                </option>
-                <option value="female">
-                    Female
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Race or Ethnicity</label>
-            <select class="form-control" name="ethnicity" placeholder="Enter you ethnicity" required>
-                <option class="placeholder" selected disabled value="">Select Ethnicity</option>
-                <option value="group A">
-                    Group A
-                </option>
-                <option value="group B">
-                    Group B
-                </option>
-                <option value="group C">
-                    Group C
-                </option>
-                <option value="group D">
-                    Group D
-                </option>
-                <option value="group E">
-                    Group E
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Parental Level of Education</label>
-            <select class="form-control" name="parental_level_of_education"
-                placeholder="Enter you Parent Education" required>
-                <option class="placeholder" selected disabled value="">Select Parent Education</option>
-                <option value="associate's degree">
-                    associate's degree
-                </option>
-                <option value="bachelor's degree">
-                    bachelor's degree
-                </option>
-                <option value="high school">
-                    high school
-                </option>
-                <option value="master's degree">
-                    master's degree
-                </option>
-                <option value="some college">
-                    some college
-                </option>
-                <option value="some high school">
-                    some high school
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Lunch Type</label>
-            <select class="form-control" name="lunch" placeholder="Enter you Lunch" required>
-                <option class="placeholder" selected disabled value="">Select Lunch Type</option>
-                <option value="free/reduced">
-                    free/reduced
-                </option>
-                <option value="standard">
-                    standard
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Test preparation Course</label>
-            <select class="form-control" name="test_preparation_course" placeholder="Enter you Course"
-                required>
-                <option class="placeholder" selected disabled value="">Select Test_course</option>
-                <option value="none">
-                    None
-                </option>
-                <option value="completed">
-                    Completed
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Writing Score out of 100</label>
-            <input class="form-control" type="number" name="reading_score"
-                placeholder="Enter your Reading score" min='0' max='100' />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Reading Score out of 100</label>
-            <input class="form-control" type="number" name="writing_score"
-                placeholder="Enter your Reading Score" min='0' max='100' />
-        </div>
-        <div class="mb-3">
-            <input class="btn btn-primary" type="submit" value="Predict your Maths Score" required />
-        </div>
-    </form>
-    <h2>
-       The prediction is {{ results }}
-    </h2>
-   <body>
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <h1>
+                <legend>Student Exam Performance Prediction</legend>
+            </h1>
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <select class="form-control" name="gender" required>
+                    <option class="placeholder" selected disabled value="">Select your Gender</option>
+                    <option value="male" {% if gender == 'male' %}selected{% endif %}>Male</option>
+                    <option value="female" {% if gender == 'female' %}selected{% endif %}>Female</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Race or Ethnicity</label>
+                <select class="form-control" name="ethnicity" required>
+                    <option class="placeholder" selected disabled value="">Select Ethnicity</option>
+                    <option value="group A" {% if ethnicity == 'group A' %}selected{% endif %}>Group A</option>
+                    <option value="group B" {% if ethnicity == 'group B' %}selected{% endif %}>Group B</option>
+                    <option value="group C" {% if ethnicity == 'group C' %}selected{% endif %}>Group C</option>
+                    <option value="group D" {% if ethnicity == 'group D' %}selected{% endif %}>Group D</option>
+                    <option value="group E" {% if ethnicity == 'group E' %}selected{% endif %}>Group E</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Parental Level of Education</label>
+                <select class="form-control" name="parental_level_of_education" required>
+                    <option class="placeholder" selected disabled value="">Select Parent Education</option>
+                    <option value="associate's degree" {% if parental_level_of_education == "associate's degree" %}selected{% endif %}>Associate's Degree</option>
+                    <option value="bachelor's degree" {% if parental_level_of_education == "bachelor's degree" %}selected{% endif %}>Bachelor's Degree</option>
+                    <option value="high school" {% if parental_level_of_education == 'high school' %}selected{% endif %}>High School</option>
+                    <option value="master's degree" {% if parental_level_of_education == "master's degree" %}selected{% endif %}>Master's Degree</option>
+                    <option value="some college" {% if parental_level_of_education == 'some college' %}selected{% endif %}>Some College</option>
+                    <option value="some high school" {% if parental_level_of_education == 'some high school' %}selected{% endif %}>Some High School</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Lunch Type</label>
+                <select class="form-control" name="lunch" required>
+                    <option class="placeholder" selected disabled value="">Select Lunch Type</option>
+                    <option value="free/reduced" {% if lunch == 'free/reduced' %}selected{% endif %}>Free/Reduced</option>
+                    <option value="standard" {% if lunch == 'standard' %}selected{% endif %}>Standard</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Test Preparation Course</label>
+                <select class="form-control" name="test_preparation_course" required>
+                    <option class="placeholder" selected disabled value="">Select Test Course</option>
+                    <option value="none" {% if test_preparation_course == 'none' %}selected{% endif %}>None</option>
+                    <option value="completed" {% if test_preparation_course == 'completed' %}selected{% endif %}>Completed</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Writing Score out of 100</label>
+                <input class="form-control" type="number" name="writing_score" placeholder="Enter your Writing Score" min="0" max="100" value="{{ writing_score }}" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Reading Score out of 100</label>
+                <input class="form-control" type="number" name="reading_score" placeholder="Enter your Reading Score" min="0" max="100" value="{{ reading_score }}" required />
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict your Maths Score" />
+            </div>
+        </form>
+        <h2>
+            The prediction is {{ results }}
+        </h2>
+    </div>
+</body>
 </html>
