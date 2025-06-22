@@ -17,3 +17,6 @@ logs/
 
 # Model artifacts file
 artifacts/
+
+# Catboost training files
+catboost_info/
