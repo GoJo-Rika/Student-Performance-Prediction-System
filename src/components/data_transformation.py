@@ -16,7 +16,7 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path = Path("artifacts") / "proprocessor.pkl"
+    preprocessor_obj_file_path = Path("artifacts") / "preprocessor.pkl"
 
 
 class DataTransformation:
